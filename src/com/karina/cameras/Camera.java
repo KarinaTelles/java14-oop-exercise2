@@ -1,7 +1,10 @@
 package com.karina.cameras;
 
-public class Camera {
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
+public class Camera {
     private boolean active;
     private String serialNumber;
     private Position position;
@@ -11,6 +14,15 @@ public class Camera {
         PTZ,
         EPTZ,
         STATIONARY
+    }
+    public static Camera readCamera(){
+        try {
+            Scanner in = new Scanner(new File("cameras.txt"));
+            String[] data =  in.nextLine().split(" ");
+            System.out.println("Read the data");
+        } catch (FileNotFoundException e) {
+        }
+        return null;
     }
     public Camera(){
        System.out.println("Câmera criada");

@@ -4,7 +4,9 @@ import com.karina.cameras.Camera;
 //import com.karina.cameras.Camera.CameraType;
 public class Main {
     public static void main(String[] args) {
+        Camera c = Camera.readCamera();
 
+        Camera.readCamera();
         Camera camera = new Camera("SN0000000000000001");
         camera.setCameraType("EPTZ");
 
