@@ -20,6 +20,9 @@ public class Camera {
             Scanner in = new Scanner(new File("cameras.txt"));
             String[] data =  in.nextLine().split(" ");
             System.out.println("Read the data");
+            Camera camera = new Camera(data[1]);
+            camera.setActive(Boolean.getBoolean(data[0]));
+            Position p = new Position();
         } catch (FileNotFoundException e) {
         }
         return null;
