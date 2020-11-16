@@ -46,11 +46,9 @@ public class Camera {
         position.setPan(0);
         position.setZoom(0);
     }
-   
     public CameraType getPtz() {
         return cameraType;
     }
-
     public void setCameraType(CameraType cameraType) {
         this.cameraType = cameraType;
     }
@@ -60,15 +58,14 @@ public class Camera {
     public boolean isActive() {
         return active;
     }
+    public void setActive(boolean active) {
+        this.active = active;
+    }
     public String getSerialNumber() {
         return serialNumber;
     }
-
     public Position getPosition() {
         return position;
-    }
-    public void setActive(boolean active) {
-        this.active = active;
     }
     public void setSerialNumber(String serialNumber){
         this.serialNumber = serialNumber;
