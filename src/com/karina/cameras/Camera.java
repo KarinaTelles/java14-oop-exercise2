@@ -16,16 +16,24 @@ public class Camera {
         STATIONARY
     }
     public static Camera readCamera(){
+        Camera camera = new Camera();
         try {
             Scanner in = new Scanner(new File("cameras.txt"));
             String[] data =  in.nextLine().split(" ");
             System.out.println("Read the data");
-            Camera camera = new Camera(data[1]);
-            camera.setActive(Boolean.getBoolean(data[0]));
-            Position p = new Position();
+            camera.setSerialNumber(data[1]);
+
+            boolean activeBolean;
+            activeBolean = camera.getActive((Boolean.getBoolean(data[0])));
+            System.out.println("teste antes de atribuição: " + activeBolean);
+            camera.setActive(activeBolean);
+            System.out.println("Será que funcinou? por favor, sim " + camera);
+            camera.setPosition(Integer.parseInt(data [2]) , Integer.parseInt(data [3]), Integer.parseInt(data [4]) );
+           camera.setCameraType(data[5]);
+            System.out.println(camera);
         } catch (FileNotFoundException e) {
         }
-        return null;
+        return camera;
     }
     public Camera(){
        System.out.println("Câmera criada");
@@ -37,14 +45,14 @@ public class Camera {
        position.setZoom(0);
     }
     public Camera(String serialNumber){
-        System.out.println("Câmera criada");
-        System.out.println("Construtor com parâmetro");
-        this.serialNumber = serialNumber;
-        active = true;
-        position = new Position();
-        position.setTilt(0);
-        position.setPan(0);
-        position.setZoom(0);
+//        System.out.println("Câmera criada");
+//        System.out.println("Construtor com parâmetro");
+//        this.serialNumber = serialNumber;
+//        active = true;
+//        position = new Position();
+//        position.setTilt(0);
+//        position.setPan(0);
+//        position.setZoom(0);
     }
     public CameraType getPtz() {
         return cameraType;
@@ -55,11 +63,17 @@ public class Camera {
     public void setCameraType(String cameraType){
         this.cameraType = CameraType.valueOf(cameraType);
     }
-    public boolean isActive() {
+
+    public CameraType getCameraType() {
+        return cameraType;
+    }
+
+    public boolean getActive(boolean aBoolean) {
         return active;
     }
-    public void setActive(boolean active) {
+    public boolean setActive(boolean active) {
         this.active = active;
+        return active;
     }
     public String getSerialNumber() {
         return serialNumber;
